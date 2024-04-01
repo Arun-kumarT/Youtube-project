@@ -60,6 +60,8 @@ def durationInSeconds(duration):
     duration =list(duration)
     del duration[0:2]
     duration_seconds = 0
+  #enumerate is used because this builtin function can able to Returns an iterator with index and element pairs from the original iterable
+   #x += 5, Equivalent to x = x + 5
     for i,e in enumerate(duration):
         if(e == 'H'):
             duration_seconds += int(duration[i-1])* 60 * 60
@@ -70,6 +72,7 @@ def durationInSeconds(duration):
     return duration_seconds
 
 #Changing Date format
+# function is used to parse date strings in ISO 8601 format.
 def changeDateFormat(date_string):
     datetime_obj = parser.isoparse(date_string)
     format_datetime = datetime_obj.strftime('%Y-%m-%d %H:%M:%S')
