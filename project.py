@@ -74,8 +74,8 @@ def durationInSeconds(duration):
 #Changing Date format
 # function is used to parse date strings in ISO 8601 format.
 def changeDateFormat(date_string):
-    datetime_obj = parser.isoparse(date_string)
-    format_datetime = datetime_obj.strftime('%Y-%m-%d %H:%M:%S')
+    datetime= parser.isoparse(date_string)
+    format_datetime = datetime.strftime('%Y-%m-%d %H:%M:%S')
     return format_datetime
 
 
@@ -173,7 +173,7 @@ def playlist_details(channel_id):
 st.header('YouTube Data Harvesting and Warehousing using SQL and Streamlit  ', divider='rainbow')  
 st.subheader('                      By ARUNKUMAR T:sunglasses:')
  
-channel_id= st.text_input('Enter channel_id:',label_visibility = 'collapsed') 
+channel_id= st.text_input('Enter channel_id:') 
 if  st.button('scrape') and channel_id:
   st.write('Preview',channel_details(channel_id))
 
@@ -498,7 +498,7 @@ elif question=="5. Which videos have the highest number of likes and correspondi
     df5=pd.DataFrame(Q5,columns=["videotitle","channelname","likecount"])
     st.write(df5)
 
-elif question=="6. Total number of likes and dislikes for each video, and corresponding video names?":
+elif question=="6. Total number of likes for each video, and corresponding video names?":
     query6='''select likes as LikeCount,title as Videotitle from videos;'''
     mycursor.execute(query6)
     Q6 = mycursor.fetchall()
